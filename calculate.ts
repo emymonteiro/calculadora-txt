@@ -1,6 +1,8 @@
 const fs = require('fs')
+const path = require('path')
 
-const config = require('./config.json')
+const configPath = path.join(process.cwd(), './config.json');
+const config = JSON.parse(fs.readFileSync(configPath));
 
 function filesFolder(){
     const result = fs.readdirSync(config.filesPath) 
@@ -11,7 +13,8 @@ function readText(){
     let calculate = 0
     const files = config.getCustomFiles.length > 0 ? config.getCustomFiles : filesFolder()
     files.forEach(el => {
-        const result = fs.readFileSync(config.getCustomFiles.length == 0 ? config.filesPath : '' + el, 'utf8')
+        const filter = config.getCustomFiles.length == 0 ? config.filesPath : ''
+        const result = fs.readFileSync(filter + el, 'utf8')
         calculate += Number(result)
     })
     return calculate
