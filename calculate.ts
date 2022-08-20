@@ -9,9 +9,9 @@ function filesFolder(){
 
 function readText(){
     let calculate = 0
-    const files = config.getCustomFiles !== "" ? config.getCustomFiles : filesFolder()
+    const files = config.getCustomFiles.length > 0 ? config.getCustomFiles : filesFolder()
     files.forEach(el => {
-        const result = fs.readFileSync(config.getCustomFiles === "" ? config.filesPath : '' + el, 'utf8')
+        const result = fs.readFileSync(config.getCustomFiles.length == 0 ? config.filesPath : '' + el, 'utf8')
         calculate += Number(result)
     })
     return calculate
