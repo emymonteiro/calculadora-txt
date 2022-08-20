@@ -1,0 +1,8 @@
+{
+    "filesPath": "files/",
+    "resultFile": "meu-arquivo.txt",
+    "getCustomFiles": [
+        "teste.txt",
+        "teste2.txt"
+    ]
+}
